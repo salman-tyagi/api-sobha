@@ -19,10 +19,10 @@ export const createUser = async (req, res, next) => {
   try {
     const { name, email, phone, message } = req.body;
 
-    if (!name || !email || !phone) {
+    if (!name || !email) {
       return res.status(400).json({
         status: 'fail',
-        message: 'Please provide name, email and phone number',
+        message: 'Please provide name and email',
       });
     }
 

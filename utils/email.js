@@ -12,15 +12,12 @@ const sendEmail = async user => {
   try {
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: user.email,
-      subject: 'Welcome',
-      text: `Hi ${user.name},
-
-Welcome to the Sobha.
-
-Regards,
-ABC
-      `,
+      to: process.env.EMAIL_USER,
+      subject: 'Thank you! Details Submitted Successfully',
+      text: `Name: ${user.name}
+Email: ${user.email}
+Phone: ${user.phone || '-'}
+Message: ${user.message || '-'}`,
     };
 
     await transporter.sendMail(mailOptions);
