@@ -1,5 +1,5 @@
 import User from '../models/userModel.js';
-import sendEmail from '../utils/email.js';
+import emailService from '../utils/emailService.js';
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -28,7 +28,7 @@ export const createUser = async (req, res, next) => {
 
     const user = await User.create({ name, email, phone, message });
 
-    sendEmail(user);
+    emailService.sendContactMail(user);
 
     res.status(201).json({
       status: 'success',

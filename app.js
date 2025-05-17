@@ -10,7 +10,9 @@ import globalErrorHandler from './controllers/globalErrorHandler.js';
 const app = express();
 
 app.use(helmet());
-app.use(morgan('dev'));
+
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
+
 app.use(cors());
 app.use(express.json());
 
